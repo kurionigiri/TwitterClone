@@ -41,6 +41,8 @@
 }
 
 a {
+    font-size: 13px;
+    color: #1af;
     text-decoration: none;
 }
 /* サイド */
@@ -109,7 +111,7 @@ a {
     padding: 10px;
 }
 
-.home .twett-post .my-icon{
+.home .tweet-post .my-icon{
     width: 80px;
     padding: 5px 15px 10px 10px;
 }
@@ -136,7 +138,6 @@ a {
 }
 
 .home .tweet-post .input-area .buttom-area{
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     border-top: 1px solid #eef;
