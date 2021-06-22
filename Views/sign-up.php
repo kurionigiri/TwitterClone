@@ -1,12 +1,13 @@
+<?php
+// 設定関連を読み込む
+include_once('../config.php');
+// 便利な関数を読み込む
+include_once('../util.php');
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap　CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/twitterClone/Views/css/style.css" rel="stylesheet">
+    <?php include_once('../Views/common/head.php');?>
     <title>会員登録画面/Twitterクローン</title>
     <meta name="description" content="会員登録画面です">
 </head>
@@ -14,7 +15,7 @@
 <body class="signup text-center">
     <main class="form-signup">
         <form action="sign-up.php" method="post">
-            <img src="/TwitterClone/Views/img/logo-white.svg" alt="logo" class="logo-white">
+            <img src="<?php echo HOME_URL;?>/Views/img/logo-white.svg" alt="logo" class="logo-white">
             <h1>アカウントを作る</h1>
             <input type="text" class="form-control" name="nickname" placeholder="ニックネーム" maxlength="50" required autofocus>
             <input type="text" class="form-control" name="name" placeholder="ユーザー名、例)techis132" maxlength="50" required>
@@ -24,7 +25,9 @@
             <p class="mt-3 mb-2"><a href="sign-in.php">ログインする</a></p>
             <p class="mt-2 mb-3 text-muted">&copy; 2021</p>
         </form>
-    </main>    
+    </main> 
+
+    <?php include_once('../Views/common/foot.php');?>   
 </body>
 
 </html>

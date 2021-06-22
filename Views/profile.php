@@ -1,37 +1,33 @@
+<?php
+// 設定関連を読み込む
+include_once('../config.php');
+// 便利な関数を読み込む
+include_once('../util.php');
+$view_tweets = [
+    [
+        'user_id' => 1,
+        'user_name' => 'taro',
+        'user_nickname' => '太郎',
+        'user_image_name' => 'sample-person.jpg',
+        'tweet_body' => '今プログラミングをしています。',
+        'tweet_image_name' => null ,
+        'tweet_created_at' => '2021-05-15 14:00:00',
+        'like_id' => null,
+        'like_count' => 0,
+    ],
+];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ホーム画面です">
-    <link rel="icon" href="/twitterClone/Views/img/logo-twitterblue.svg">
-    <!-- Bootstrap　CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/twitterClone/Views/css/style.css" rel="stylesheet">
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous" defer></script>
-    <!-- いいね！JS -->
-    <!-- <script src="<?php echo HOME_URL; ?>/twitterClone/Views/js/like.js" defer></script> -->
-    <title>ホーム画面/titterクローン</title>
+    <?php include_once('../Views/common/head.php');?>
+    <title>プロフィール画面/Twitterクローン</title>
+    <meta name="description" content="プロフィール画面です">
 </head>
 <body class="home profile text-center">
     <div class="container">
-        <div class="side">
-            <div class="side-inner"> 
-                 <ul class="nav flex-column"> 
-                    <li class="nav-item"><a href="home.php" class="nav-link"><img src="/twitterClone/Views/img/logo-twitterblue.svg" alt="logo" class="icon"></a></li>
-                    <li class="nav-item"><a href="home.php" class="nav-link"><img src="/twitterClone/Views/img/icon-home.svg" alt="homme"></a></li>
-                    <li class="nav-item"><a href="search.php" class="nav-link"><img src="/twitterClone/Views/img/icon-search.svg" alt="search"></a></li>
-                    <li class="nav-item"><a href="notification.php" class="nav-link"><img src="/twitterClone/Views/img/icon-notification.svg" alt="notification"></a></li>
-                    <li class="nav-item"><a href="profile.php" class="nav-link"><img src="/twitterClone/Views/img/icon-profile.svg" alt="profile"></a></li>
-                    <li class="nav-item"><a href="post.php" class="nav-link"><img src="/twitterClone/Views/img/icon-post-tweet-twitterblue.svg" alt="post" class="post-twitter"></a></li>
-                    <li class="nav-itme my-icon"><img src="/twitterClone/Views/img_uploaded/user/sample-person.jpg" alt="sample-person" class="js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="<a href='profile.php'>プロフィール</a><br><a href='sign-out.php'>ログアウト</a>" data-bs-html="true"></li>
-                </ul>
-            </div>
-        </div> 
+        <?php include_once('../Views/common/side.php');?>
+
         <div class="main">
             <div class="main-header">
                 <h1>太郎</h1>
@@ -83,8 +79,10 @@
                         </div>
                     <?php endif;?>
                 </div>
+
                 <div class="name">太郎</div>
                 <dev class="text-muted">@taro</dev>
+                
                 <div class="follow-follower">
                     <div class="follow-count">1</div>
                     <div class="follow-text">フォロー中</div>
@@ -92,20 +90,21 @@
                     <div class="follow-text">フォロワー</div>
                 </div>
             </div>
-                    </form>
-                </div>
-            </div>
 
             <div class="ditch"></div>
-            <!-- ツイート一蘭 -->
+            <!-- ツイート一覧 -->
+            <?php if (empty($view_tweets)) : ?>
+                <p class="p-3">ツイートがまだありません</p>
+            <?php else : ?>
+                <div class="tweet-list">
+                    <?php foreach ($view_tweets as $view_tweet) : ?>
+                        <?php include('../Views/common/tweet.php');?>
+                    <?php endforeach; ?>
+                </div>      
+            <?php endif; ?>
+
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded',function() {
-            $('.js-popover').popover({
-                container: 'body'
-            })
-        },false);
-    </script>
+<?php include_once('../Views/common/foot.php');?>
 </body>
 </html>
