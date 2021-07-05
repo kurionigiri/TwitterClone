@@ -2,7 +2,7 @@
 ini_set('display_errors',1);
 
 date_default_timezone_set('Asia/Tokyo');
-define('HOME_URL','/twitterClone/');
+define('HOME_URL','/TwitterClone/');
 
 // データベースの接続情報
 define('DB_HOST', 'localhost');
